@@ -104,7 +104,7 @@ if error_paths:
 print('\n\n')
 print("Reference Table".center(50))
 print("----"*15)
-for col in ext_dict.keys():
-    if ext_dict[col]:
+for col in ext_cnt_dict:
+    if ext_cnt_dict[col]:
         print('  ' + col.ljust(20), end=' | ')
         print(", ".join(ext_dict[col]).upper())
