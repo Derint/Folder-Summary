@@ -1,0 +1,29 @@
+{
+    "pageCntFunc" : {
+        "Document": "docxTotalPage", "Excel":"xlxTotalSheet", 
+        "PPT":"pptTotalPage", "PDF":"pdfTotalPage"
+    },
+    
+    "ext_dict" : {
+        "Image" : ["jpeg", "jpg", "png", "gif", "heif", "svg", "bmp"], 
+        "Icon":["ico"],
+        "Executable": ["exe", "pyc", "jar", "class"],
+        "Document": ["docx", "doc"], 
+        "Excel":["xls", "xlsx"],
+        "PPT":["pptx"], 
+        "Video":["mp4", "mkv"], 
+        "Music":["mp3", "wav", "m4a", "ogg"],
+        "PDF":["pdf"],
+        "Jupyter NoteBook":["ipynb"], 
+        "Config File":["ini", "cfg", "conf", "dll", "iml"], 
+        "Text":["txt", "csv", "log"],
+        "Font":["ttf"],
+        "Programming" : ["py", "java", "c", "cpp",  "pbix", "r", "save", "cmd", "bat", "sh", "asm", "jl", "ts", "sql", "php", "js", "h", "vbs"],
+        "Data Storage": ["xml", "db", "json", "dat", "bak", "yaml", "yml"],
+        "Markup Lang" : ["html", "css", "tex"],
+        "Archive File": ["zip", "tar", "gz", "rar"]
+    }, 
+
+    "format" : {"Document" : "page(s)", "Image":"image(s)", "Excel":"sheet(s)", "PDF":"page(s)", "PPT":"slide(s)"}
+
+}
