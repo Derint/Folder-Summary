@@ -1,6 +1,7 @@
 print("\n  *Importing Libraries.....", end='')
 
 import os, json, argparse, subprocess, warnings
+from collections import defaultdict
 from HelperFunction import *
 
 warnings.filterwarnings("ignore")
@@ -53,7 +54,7 @@ ext_pgs_cnt = {i:0 for i in ext_dict}
 
 totalFiles = 0
 error_paths = []
-
+REF_DICT = defaultdict(set)
 cleanUp(path)
 print("\r  *Calculating...", end='')
 for fol_path, directory, files in os.walk(path):
@@ -67,7 +68,8 @@ for fol_path, directory, files in os.walk(path):
         if key is None: 
             key = "Other"
             ext_dict[key].append(ext)
-            
+        REF_DICT[key].add(ext)
+
         pgs=1
         if key in ext_pgs_dict:
             pgs = ext_pgs_dict[key](fp)
@@ -89,7 +91,7 @@ for fileType in ext_cnt_dict:
         fmtStr = fmt.get(fileType) if fileType in fmt.keys() else ""
         print(f"  {fileType.ljust(20)}|{str(noT).center(15)}|{str(noP).rjust(10)} {fmtStr}")
 print('  ' + "---"*20)
-print(f"  {f'Total Files: {totalFiles}'.ljust(20)}|{str(sum(ext_cnt_dict.values())).center(15)}|{str(sum(ext_pgs_cnt.values())).rjust(10)} pages\n\n")
+print(f"  {f'Total Files: {totalFiles}'.ljust(20)}|{str(sum(ext_cnt_dict.values())).center(15)}|{str(sum(ext_pgs_cnt.values())).rjust(10)} \n\n")
 
 if error_paths:
     print(f"  [NOTE]  Some File(s) [{len(error_paths)}] were not able to be Read. Pls open it manually and count.")
@@ -104,7 +106,6 @@ if error_paths:
 print('\n\n')
 print("Reference Table".center(50))
 print("----"*15)
-for col in ext_cnt_dict:
-    if ext_cnt_dict[col]:
-        print('  ' + col.ljust(20), end=' | ')
-        print(", ".join(ext_dict[col]).upper())
+for col in REF_DICT:
+    print('  ' + col.ljust(20), end=' | ')
+    print(", ".join(REF_DICT[col]).upper())
